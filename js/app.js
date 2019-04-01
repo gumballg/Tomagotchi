@@ -20,3 +20,5 @@ class Tomagotchi {
 
 	}
 }
+// method to update all stats on screen
+
