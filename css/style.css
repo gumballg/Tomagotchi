@@ -1,0 +1,47 @@
+body {
+	display: flex;
+	background-color: mediumspringgreen;
+}
+
+li {
+	list-style: none;
+}
+
+.device {
+	height: 500px;
+	width: 500px;
+	background-color: steelblue;
+	margin: 0 auto;
+	border-radius: 3%;
+}
+
+.screen {
+	height: 400px;
+	width: 450px;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 10px;
+	border-radius: 3%;
+}
+
+.buttons {
+	height: 35px;
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 25px;
+}
+
+.stats {
+	height: 150px;
+	width: 200px;
+	background-color: rosybrown;
+}
+
+.stats li {
+	font-size: 20px;
+}
+
+
+
+
+
