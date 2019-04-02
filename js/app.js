@@ -20,29 +20,47 @@ class Tomagotchi {
 	die(){
 
 	}
-	aging(){
-
-	}
 	morph(){
 
 	}
 }
+
+const dingleWood = new Tomagotchi('dingleWood');
 
 const game = {
 	clock: 0,
 	start() {
 		this.startTime();
 	},
+	updateTime() {
+		$('#time').text(`Time: ${this.clock}`);
+	},
 	startTime() {
 		this.currentTime = setInterval(() => {
 			this.clock++
-			console.log(game.clock);
+			this.updateTime()
+			if(this.clock % 60 === 0){
+				dingleWood.age++
+			}
+			if(this.clock % 20 === 0){
+				dingleWood.sleep++
+				dingleWood.boredom++
+			}
+			if(this.clock % 10 === 0){
+				dingleWood.hunger++
+			}
+			this.updateStats()
 		}, 1000)
 	},
-	stats() {
-		
+	updateStats() {
+		$('#age').text(`Age: ${dingleWood.age}`);
+		$('#boredom').text(`Boredom: ${dingleWood.boredom}`);
+		$('#hunger').text(`Hunger: ${dingleWood.hunger}`);
+		$('#sleepiness').text(`Sleepiness: ${dingleWood.sleep}`);
 	}
 }
+game.updateTime();
+game.updateStats();
 
 // method to update all stats on screen
 
