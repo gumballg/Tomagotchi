@@ -9,22 +9,46 @@ class Tomagotchi {
 		this.stage = 1;
 	}
 	eat(){
-		this.hunger = 1;
+		if(this.hunger > 1){
+			const feed = setInterval(() => {
+				$('#eat').css('display', 'inline-block')
+				this.hunger--
+				if(this.hunger === 1){
+					$('#eat').css('display', 'none')
+					clearInterval(feed)
+				}
+			}, 200)
+	  }
 	}
 	hungry(){
 		this.hunger++
 	}
 	nap(){
-		setInterval(() => {
-
-		}, 500)
-		this.sleep = 1;
+		if(this.sleep > 1){
+			const nap = setInterval(() => {
+				$('.screen').css('backgroundColor', 'dimGray')
+				this.sleep--
+				if(this.sleep === 1){
+					$('.screen').css('backgroundColor', 'white')
+					clearInterval(nap)
+				}
+			}, 500)
+	  }
 	}
 	tired(){
 		this.sleep++
 	}
 	play(){
-		this.boredom = 1;
+		if(this.boredom > 1){
+			const playing = setInterval(() => {
+				$('#eat').css('display', 'inline-block')
+				this.boredom--
+				if(this.boredom === 1){
+					$('#eat').css('display', 'none')
+					clearInterval(playing)
+				}
+			}, 500)
+	  }
 	}
 	bored(){
 		this.boredom++
@@ -35,7 +59,7 @@ class Tomagotchi {
 		game.death();
 	}
 	teen(){
-		$('#teen').css('display', 'block')
+		$('#teen').css('display', 'inline-block')
 		$('#child').css('display', 'none')
 		console.log("im changing");
 	}
@@ -87,7 +111,7 @@ const game = {
 			// if(this.character.boredom === 10 || this.character.hunger === 10 || this.character.sleep === 10){
 			// 	this.character.die()
 			// }
-		}, 500)
+		}, 100)
 	},
 	updateStats() {
 		$('#age').text(`Age: ${this.character.age}`);
@@ -116,7 +140,7 @@ $('#createName').on('click', (event) => {
 $('#start').on('click', (event) => {
 	$('#start').css('display', 'none')
 	$('#init').css('display', 'none')
-	$('#child').css('display', 'block')
+	$('#child').css('display', 'inline-block')
 	game.startTime();
 })
 
@@ -126,10 +150,12 @@ $('#feed').on('click', (event) => {
 
 $('#play').on('click', (event) => {
 	game.character.play();
+	console.log(event.target);
 })
 
 $('#sleep').on('click', (event) => {
 	game.character.nap();
+	console.log(event.target);
 })
 
 
