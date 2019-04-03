@@ -27,6 +27,7 @@ class Tomagotchi {
 		this.boredom++
 	}
 	die(){
+		this.alive = false;
 		clearInterval(game.currentTime);
 	}
 	morph(){
@@ -39,18 +40,10 @@ class Tomagotchi {
 
 const game = {
 	clock: 0,
-	character: [],
+	character: null,
 	createName(name) {
 	 	const dingleWood = new Tomagotchi(name);
-	 	 this.character.push(dingleWood)
-	 	console.log(dingleWood);
-	 	console.log(dingleWood.age);
-	 	console.log(this.character[0]);
-	 	console.log(this.character[0].age);
-	 	
-	},
-	start(){
-		this.startTime();
+	 	 this.character = dingleWood;	
 	},
 	updateTime() {
 		$('#time').text(`Time: ${this.clock}`);
@@ -60,30 +53,29 @@ const game = {
 			this.clock++
 			this.updateTime()
 			if(this.clock % 60 === 0){
-				this.character[0].older()
+				this.character.older()
 			}
 			if(this.clock % 20 === 0){
-				this.character[0].tired()
-				this.character[0].bored()
+				this.character.tired()
+				this.character.bored()
 			}
 			if(this.clock % 10 === 0){
-				this.character[0].hungry()
+				this.character.hungry()
 			}
 			this.updateStats()
+			if(this.character.boredom === 10 || this.character.hunger === 10 || this.character.sleep === 10){
+				this.character.die()
+			}
 		}, 100)
 	},
 	updateStats() {
-		$('#age').text(`Age: ${this.character[0].age}`);
-		$('#boredom').text(`Boredom: ${this.character[0].boredom}`);
-		$('#hunger').text(`Hunger: ${this.character[0].hunger}`);
-		$('#sleepiness').text(`Sleepiness: ${this.character[0].sleep}`);
+		$('#age').text(`Age: ${this.character.age}`);
+		$('#boredom').text(`Boredom: ${this.character.boredom}`);
+		$('#hunger').text(`Hunger: ${this.character.hunger}`);
+		$('#sleepiness').text(`Sleepiness: ${this.character.sleep}`);
 	}
 }
 
-//game.updateTime();
-// game.updateStats();
-
-// method to update all stats on screen
 $('#createName').on('click', (event) => {
 	event.preventDefault();
 	const userName = $('#name').val();
@@ -95,19 +87,19 @@ $('#createName').on('click', (event) => {
 
 $('#start').on('click', (event) => {
 	$('#start').css('display', 'none')
-	game.start();
+	game.startTime();
 })
 
 $('#feed').on('click', (event) => {
-	dingleWood.feed();
+	game.character.eat();
 })
 
 $('#play').on('click', (event) => {
-	dingleWood.play();
+	game.character.play();
 })
 
 $('#sleep').on('click', (event) => {
-	dingleWood.die();
+	game.character.nap();
 })
 
 
