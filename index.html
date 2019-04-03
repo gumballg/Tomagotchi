@@ -2,10 +2,18 @@
 <html>
 <head>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-	<title></title>
+	<title>Tomagotchi</title>
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+	<header>
+		<form class="begin">
+			<input type="text" id="name" placeholder="Lets Name Your Tomagotchi">
+			<button id="createName" type="submit">Name</button>
+		</form>
+		<button id="start">Hatch</button>
+	</header>
 	<main class="device">
 		<section class="screen">
 			<div class="home">
@@ -13,7 +21,7 @@
 					<div id="init">
 						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa45ACLcrH4WRlApHd5xRMxBE2148HjqEQgKABvJypZGx-Qi3KLA">
 					</div>
-<!-- 					<div id="child"></div>
+<!-- 			<div id="child"></div>
 					<div id="teen"></div>
 					<div id="adult"></div>
 					<div id="elder"></div>
@@ -24,16 +32,7 @@
 					<div id="sleep"></div>
 					<div id="die"></div>
 				</section>
-			</div>
-			<div class="side">
-				<section class="cylces">
-					<ul>
-						<li id="feed"></li>
-						<li id="play"></li>
-						<li id="night"></li>
-						<li id="stats"></li>
-					</ul>
-				</section> -->
+			</div> -->
 				<section class="stats">
 					<ul>
 						<li id="age"></li>
@@ -46,10 +45,9 @@
 			</div>
 		</section>
 		<section class="buttons">
-			<button id="a">Feed</button>
-			<button id="b">Play</button>
-			<button id="c">Sleep</button>
-			<button id="start">Start</button>
+			<button id="feed">Feed</button>
+			<button id="play">Play</button>
+			<button id="sleep">Sleep</button>
 		</section>
 	</main>
 <script type="text/javascript" src="js/app.js"></script>
