@@ -15,6 +15,7 @@ form input {
 	border-radius: 100px;
 	border: 5px solid #2A3132;
 	background-color: #336B87;
+	font-size: 25px;
 }
 
 input::placeholder  {
@@ -33,6 +34,12 @@ form button {
 	background-color: #763626;
 }
 
+h1 {
+	display: flex;
+	justify-content: center;
+	padding-top: 13px;
+}
+
 .device {
 	display: none;
 }
@@ -45,12 +52,11 @@ form button {
 	display: none;
 }
 
-#eat, #fly{
+#eat, #play{
 	display: none;
 	height: 50px;
 	width: 50px;
 }
-
 
 #start {
 	display: none;
@@ -74,7 +80,6 @@ form button {
 	width: 450px;
 	background-color: white;
 	margin: 0 auto;
-	margin-top: 10px;
 	border-radius: 3%;
 }
 
@@ -96,6 +101,8 @@ form button {
 }
 
 img {
+	display: flex;
+	justify-content: center;
 	height: 200px;
 	width: 200px;
 }

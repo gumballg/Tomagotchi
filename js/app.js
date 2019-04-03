@@ -77,11 +77,11 @@ const game = {
 		}
 	},
 	feed(){
-		if(this.hunger > 1){
+		if(this.character.hunger > 1){
 			const feed = setInterval(() => {
 				$('#eat').css('display', 'inline-block')
-				this.hunger--
-				if(this.hunger === 1){
+				this.character.hunger--
+				if(this.character.hunger === 1){
 					$('#eat').css('display', 'none')
 					clearInterval(feed)
 				}
@@ -89,11 +89,11 @@ const game = {
 	  }
 	},
 	play(){
-		if(this.boredom > 1){
+		if(this.character.boredom > 1){
 			const playing = setInterval(() => {
 				$('#eat').css('display', 'inline-block')
-				this.boredom--
-				if(this.boredom === 1){
+				this.character.boredom--
+				if(this.character.boredom === 1){
 					$('#eat').css('display', 'none')
 					clearInterval(playing)
 				}
@@ -101,11 +101,11 @@ const game = {
 	  }
 	},
 	sleep(){
-		if(this.sleep > 1){
+		if(this.character.sleep > 1){
 			const nap = setInterval(() => {
 				$('.screen').css('backgroundColor', 'dimGray')
-				this.sleep--
-				if(this.sleep === 1){
+				this.character.sleep--
+				if(this.character.sleep === 1){
 					$('.screen').css('backgroundColor', 'white')
 					clearInterval(nap)
 				}
@@ -136,7 +136,7 @@ $('#feed').on('click', (event) => {
 	game.feed();
 })
 
-$('#play').on('click', (event) => {
+$('#fun').on('click', (event) => {
 	game.play();
 })
 
