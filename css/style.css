@@ -71,9 +71,9 @@ form button {
 }
 
 .stats {
-	height: 150px;
-	width: 200px;
 	background-color: rosybrown;
+	height: 125px;
+	width: 150px;
 }
 
 .stats li {

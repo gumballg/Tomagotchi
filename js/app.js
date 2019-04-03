@@ -31,7 +31,7 @@ class Tomagotchi {
 		clearInterval(game.currentTime);
 	}
 	morph(){
-
+		console.log("im changing");
 	}
 	older(){
 		this.age++
@@ -54,6 +54,9 @@ const game = {
 			this.updateTime()
 			if(this.clock % 60 === 0){
 				this.character.older()
+				if(this.character.age === 5 || this.character.age === 14 || this.character.age === 24){
+					this.character.morph();
+				}
 			}
 			if(this.clock % 20 === 0){
 				this.character.tired()
@@ -63,17 +66,17 @@ const game = {
 				this.character.hungry()
 			}
 			this.updateStats()
-			if(this.character.boredom === 10 || this.character.hunger === 10 || this.character.sleep === 10){
-				this.character.die()
-			}
-		}, 100)
+			// if(this.character.boredom === 10 || this.character.hunger === 10 || this.character.sleep === 10){
+			// 	this.character.die()
+			// }
+		}, 50)
 	},
 	updateStats() {
 		$('#age').text(`Age: ${this.character.age}`);
 		$('#boredom').text(`Boredom: ${this.character.boredom}`);
 		$('#hunger').text(`Hunger: ${this.character.hunger}`);
 		$('#sleepiness').text(`Sleepiness: ${this.character.sleep}`);
-	}
+	}	
 }
 
 $('#createName').on('click', (event) => {
