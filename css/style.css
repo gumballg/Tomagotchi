@@ -87,9 +87,8 @@ form button {
 
 .stats {
 	display: block;
-	background-color: rosybrown;
-	height: 150px;
-	width: 200px;
+	height: 125px;
+	width: 100%;
 }
 
 .stats li {

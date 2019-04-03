@@ -8,47 +8,11 @@ class Tomagotchi {
 		this.alive = true;
 		this.stage = 1;
 	}
-	eat(){
-		if(this.hunger > 1){
-			const feed = setInterval(() => {
-				$('#eat').css('display', 'inline-block')
-				this.hunger--
-				if(this.hunger === 1){
-					$('#eat').css('display', 'none')
-					clearInterval(feed)
-				}
-			}, 200)
-	  }
-	}
 	hungry(){
 		this.hunger++
 	}
-	nap(){
-		if(this.sleep > 1){
-			const nap = setInterval(() => {
-				$('.screen').css('backgroundColor', 'dimGray')
-				this.sleep--
-				if(this.sleep === 1){
-					$('.screen').css('backgroundColor', 'white')
-					clearInterval(nap)
-				}
-			}, 500)
-	  }
-	}
 	tired(){
 		this.sleep++
-	}
-	play(){
-		if(this.boredom > 1){
-			const playing = setInterval(() => {
-				$('#eat').css('display', 'inline-block')
-				this.boredom--
-				if(this.boredom === 1){
-					$('#eat').css('display', 'none')
-					clearInterval(playing)
-				}
-			}, 500)
-	  }
 	}
 	bored(){
 		this.boredom++
@@ -58,16 +22,9 @@ class Tomagotchi {
 		clearInterval(game.currentTime);
 		game.death();
 	}
-	teen(){
+	morph(){
 		$('#teen').css('display', 'inline-block')
 		$('#child').css('display', 'none')
-		console.log("im changing");
-	}
-	adult(){
-		console.log("im changing");
-	}
-	elder(){
-		console.log("im changing");
 	}
 	older(){
 		this.age++
@@ -90,14 +47,8 @@ const game = {
 			this.updateTime()
 			if(this.clock % 60 === 0){
 				this.character.older()
-				if(this.character.age === 5){
-					this.character.teen();
-				}
-				if(this.character.age === 14){
-					this.character.adult();
-				}
-				if(this.character.age === 24){
-					this.character.elder();
+				if(this.character.age === 10){
+					this.character.morph();
 				}
 			}
 			if(this.clock % 20 === 0){
@@ -108,9 +59,9 @@ const game = {
 				this.character.hungry()
 			}
 			this.updateStats()
-			// if(this.character.boredom === 10 || this.character.hunger === 10 || this.character.sleep === 10){
-			// 	this.character.die()
-			// }
+			if(this.character.boredom === 10 || this.character.hunger === 10 || this.character.sleep === 10){
+				this.character.die()
+			}
 		}, 100)
 	},
 	updateStats() {
@@ -122,7 +73,44 @@ const game = {
 	death(){
 		if(this.character.alive === false){
 			$('#die').css('display', 'block')
+			$('.stages').css('display', 'none')
 		}
+	},
+	feed(){
+		if(this.hunger > 1){
+			const feed = setInterval(() => {
+				$('#eat').css('display', 'inline-block')
+				this.hunger--
+				if(this.hunger === 1){
+					$('#eat').css('display', 'none')
+					clearInterval(feed)
+				}
+			}, 200)
+	  }
+	},
+	play(){
+		if(this.boredom > 1){
+			const playing = setInterval(() => {
+				$('#eat').css('display', 'inline-block')
+				this.boredom--
+				if(this.boredom === 1){
+					$('#eat').css('display', 'none')
+					clearInterval(playing)
+				}
+			}, 500)
+	  }
+	},
+	sleep(){
+		if(this.sleep > 1){
+			const nap = setInterval(() => {
+				$('.screen').css('backgroundColor', 'dimGray')
+				this.sleep--
+				if(this.sleep === 1){
+					$('.screen').css('backgroundColor', 'white')
+					clearInterval(nap)
+				}
+			}, 500)
+	  }
 	}
 }
 
@@ -145,17 +133,15 @@ $('#start').on('click', (event) => {
 })
 
 $('#feed').on('click', (event) => {
-	game.character.eat();
+	game.feed();
 })
 
 $('#play').on('click', (event) => {
-	game.character.play();
-	console.log(event.target);
+	game.play();
 })
 
 $('#sleep').on('click', (event) => {
-	game.character.nap();
-	console.log(event.target);
+	game.sleep();
 })
 
 
