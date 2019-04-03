@@ -33,7 +33,27 @@ form button {
 	background-color: #763626;
 }
 
+.namechoice {
+	
+}
+
 .device {
+	display: none;
+}
+
+#child{
+	display: none;
+}
+
+#adult{
+	display: none;
+}
+
+#elder{
+	display: none;
+}
+
+#die {
 	display: none;
 }
 
@@ -47,7 +67,7 @@ form button {
 }
 
 .device {
-	height: 500px;
+	height: 550px;
 	width: 500px;
 	background-color: steelblue;
 	margin: 0 auto;
@@ -72,12 +92,17 @@ form button {
 
 .stats {
 	background-color: rosybrown;
-	height: 125px;
-	width: 150px;
+	height: 150px;
+	width: 200px;
 }
 
 .stats li {
 	font-size: 20px;
+}
+
+img {
+	height: 200px;
+	width: 200px;
 }
 
 

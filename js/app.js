@@ -15,6 +15,9 @@ class Tomagotchi {
 		this.hunger++
 	}
 	nap(){
+		setInterval(() => {
+
+		}, 500)
 		this.sleep = 1;
 	}
 	tired(){
@@ -29,8 +32,17 @@ class Tomagotchi {
 	die(){
 		this.alive = false;
 		clearInterval(game.currentTime);
+		game.death();
 	}
-	morph(){
+	teen(){
+		$('#teen').css('display', 'block')
+		$('#child').css('display', 'none')
+		console.log("im changing");
+	}
+	adult(){
+		console.log("im changing");
+	}
+	elder(){
 		console.log("im changing");
 	}
 	older(){
@@ -54,8 +66,14 @@ const game = {
 			this.updateTime()
 			if(this.clock % 60 === 0){
 				this.character.older()
-				if(this.character.age === 5 || this.character.age === 14 || this.character.age === 24){
-					this.character.morph();
+				if(this.character.age === 5){
+					this.character.teen();
+				}
+				if(this.character.age === 14){
+					this.character.adult();
+				}
+				if(this.character.age === 24){
+					this.character.elder();
 				}
 			}
 			if(this.clock % 20 === 0){
@@ -69,14 +87,19 @@ const game = {
 			// if(this.character.boredom === 10 || this.character.hunger === 10 || this.character.sleep === 10){
 			// 	this.character.die()
 			// }
-		}, 50)
+		}, 500)
 	},
 	updateStats() {
 		$('#age').text(`Age: ${this.character.age}`);
 		$('#boredom').text(`Boredom: ${this.character.boredom}`);
 		$('#hunger').text(`Hunger: ${this.character.hunger}`);
 		$('#sleepiness').text(`Sleepiness: ${this.character.sleep}`);
-	}	
+	},
+	death(){
+		if(this.character.alive === false){
+			$('#die').css('display', 'block')
+		}
+	}
 }
 
 $('#createName').on('click', (event) => {
@@ -86,10 +109,14 @@ $('#createName').on('click', (event) => {
 	$('.begin').css('display', 'none')
 	$('#start').css('display', 'block')
 	$('.device').css('display', 'block')
+	$('#teen').css('display', 'none')
+	$('.namechoice').text(`Here is ${userName}`)
 })
 
 $('#start').on('click', (event) => {
 	$('#start').css('display', 'none')
+	$('#init').css('display', 'none')
+	$('#child').css('display', 'block')
 	game.startTime();
 })
 
