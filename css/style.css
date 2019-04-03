@@ -1,5 +1,6 @@
 body {
 	background-color: #90AFC5;
+	font-family: 'Indie Flower';
 }
 
 li {
@@ -76,11 +77,13 @@ h1 {
 }
 
 .screen {
-	height: 400px;
+	display: flex;
+	height: 325px;
 	width: 450px;
 	background-color: white;
 	margin: 0 auto;
 	border-radius: 3%;
+	align-items: flex-end;
 }
 
 .buttons {
@@ -91,20 +94,33 @@ h1 {
 }
 
 .stats {
-	display: block;
-	height: 125px;
-	width: 100%;
+	color: white;
+	background-color: black;
+	border-radius: 8px;
 }
 
 .stats li {
+	display: inline;
 	font-size: 20px;
 }
 
 img {
-	display: flex;
-	justify-content: center;
 	height: 200px;
 	width: 200px;
+}
+
+#apple {
+	width: 50px;
+	height: 50px;
+}
+
+#init {
+	display: inline-block;
+	margin: 0 auto;
+}
+
+#die {
+	justify-content: center;
 }
 
 

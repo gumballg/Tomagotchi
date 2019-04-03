@@ -23,7 +23,7 @@ class Tomagotchi {
 		game.death();
 	}
 	morph(){
-		$('#teen').css('display', 'inline-block')
+		$('#teen').css('display', 'inline')
 		$('#child').css('display', 'none')
 	}
 	older(){
@@ -38,13 +38,9 @@ const game = {
 	 	const dingleWood = new Tomagotchi(name);
 	 	 this.character = dingleWood;	
 	},
-	updateTime() {
-		$('#time').text(`Time: ${this.clock}`);
-	},
 	startTime() {
 		this.currentTime = setInterval(() => {
 			this.clock++
-			this.updateTime()
 			if(this.clock % 60 === 0){
 				this.character.older()
 				if(this.character.age === 10){
@@ -62,7 +58,7 @@ const game = {
 			if(this.character.boredom === 10 || this.character.hunger === 10 || this.character.sleep === 10){
 				this.character.die()
 			}
-		}, 100)
+		}, 250)
 	},
 	updateStats() {
 		$('#age').text(`Age: ${this.character.age}`);
@@ -72,14 +68,15 @@ const game = {
 	},
 	death(){
 		if(this.character.alive === false){
-			$('#die').css('display', 'block')
-			$('.stages').css('display', 'none')
+			$('#die').css('display', 'flex')
+			$('.screen').css('display', 'none')
+			$('.buttons').css('display', 'none')
 		}
 	},
 	feed(){
 		if(this.character.hunger > 1){
 			const feed = setInterval(() => {
-				$('#eat').css('display', 'inline-block')
+				$('#eat').css('display', 'inline')
 				this.character.hunger--
 				if(this.character.hunger === 1){
 					$('#eat').css('display', 'none')
@@ -91,7 +88,7 @@ const game = {
 	play(){
 		if(this.character.boredom > 1){
 			const playing = setInterval(() => {
-				$('#eat').css('display', 'inline-block')
+				$('#eat').css('display', 'inline')
 				this.character.boredom--
 				if(this.character.boredom === 1){
 					$('#eat').css('display', 'none')
@@ -109,7 +106,7 @@ const game = {
 					$('.screen').css('backgroundColor', 'white')
 					clearInterval(nap)
 				}
-			}, 500)
+			}, 800)
 	  }
 	}
 }
@@ -128,7 +125,7 @@ $('#createName').on('click', (event) => {
 $('#start').on('click', (event) => {
 	$('#start').css('display', 'none')
 	$('#init').css('display', 'none')
-	$('#child').css('display', 'inline-block')
+	$('#child').css('display', 'inline')
 	game.startTime();
 })
 
