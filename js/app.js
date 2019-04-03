@@ -43,7 +43,7 @@ const game = {
 			this.clock++
 			if(this.clock % 60 === 0){
 				this.character.older()
-				if(this.character.age === 10){
+				if(this.character.age === 5){
 					this.character.morph();
 				}
 			}
